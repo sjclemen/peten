@@ -1,0 +1,50 @@
+diff -ur mayan/apps/metadata/api_views.py /home/mayan-edms/mayan/apps/metadata/api_views.py
+--- mayan/apps/metadata/api_views.py	2016-02-14 20:37:04.000000000 -0500
++++ mayan.fixed/apps/metadata/api_views.py	2016-02-26 20:40:08.938486710 -0500
+@@ -97,7 +101,7 @@
+     def get_queryset(self):
+         document = self.get_document()
+ 
+-        if self.request == 'GET':
++        if self.request.method == 'GET':
+             # Make sure the use has the permission to see the metadata for
+             # this document
+             try:
+@@ -111,7 +115,7 @@
+                 )
+             else:
+                 return document.metadata.all()
+-        elif self.request == 'POST':
++        elif self.request.method == 'POST':
+             # Make sure the use has the permission to add metadata to this
+             # document
+             try:
+@@ -127,7 +131,7 @@
+                 return document.metadata.all()
+ 
+     def pre_save(self, serializer):
+-        serializer.document = self.get_document()
++        serializer.documentThing = self.get_document()
+ 
+     def get(self, *args, **kwargs):
+         """
+diff -ur mayan/apps/metadata/serializers.py /home/mayan-edms/mayan/apps/metadata/serializers.py
+--- mayan/apps/metadata/serializers.py	2016-02-14 20:37:04.000000000 -0500
++++ mayan.fixed/apps/metadata/serializers.py	2016-02-26 20:41:07.215775911 -0500
+@@ -14,12 +14,15 @@
+ 
+ 
+ class DocumentMetadataSerializer(serializers.ModelSerializer):
+-    document = serializers.PrimaryKeyRelatedField(read_only=True)
++#    document = serializers.PrimaryKeyRelatedField(read_only=True, required=False)
+ 
+     class Meta:
+         fields = ('document', 'id', 'metadata_type', 'value',)
+         model = DocumentMetadata
+ 
++#    def create(self, validated_data):
++#        validated_data['document'] = self.documentThing
++#        return super(DocumentMetadataSerializer, self).create(validated_data)
+ 
+ class DocumentTypeMetadataTypeSerializer(serializers.ModelSerializer):
+     class Meta:

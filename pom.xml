@@ -1,0 +1,177 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>ca.edmssubmit</groupId>
+	<artifactId>edmssubmit</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>EDMS Submit</name>
+	<build>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<testSourceDirectory>src/test/java</testSourceDirectory>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>ca.edmssubmit.MainEntry</mainClass>
+						</manifest>
+					</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+			</plugin>
+		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/resources/</directory>
+			</resource>
+		</resources>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>jface-local-repo</id>
+			<url>file:${project.basedir}/jface-repository</url>
+		</repository>
+	</repositories>
+	<dependencies>
+		<!-- swt + jface -->
+			<dependency>
+		<groupId>org.eclipse.core.commands</groupId>
+		<artifactId>commands</artifactId>
+		<version>3.6.100.v20140528-1422</version>
+	</dependency>
+	<dependency>
+		<groupId>org.eclipse.core.databinding</groupId>
+		<artifactId>databinding</artifactId>
+		<version>1.4.2.v20140729-1044</version>
+	</dependency>
+	<dependency>
+		<groupId>org.eclipse.core.databinding.beans</groupId>
+		<artifactId>beans</artifactId>
+		<version>1.2.200.v20140214-0004</version>
+	</dependency>
+	<dependency>
+		<groupId>org.eclipse.core.databinding.observable</groupId>
+		<artifactId>observable</artifactId>
+		<version>1.4.1.v20140210-1835</version>
+	</dependency>
+	<dependency>
+		<groupId>org.eclipse.core.databinding.property</groupId>
+		<artifactId>property</artifactId>
+		<version>1.4.200.v20140214-0004</version>
+	</dependency>
+	<dependency>
+		<groupId>org.eclipse.equinox.common</groupId>
+		<artifactId>common</artifactId>
+		<version>3.6.200.v20130402-1505</version>
+	</dependency>
+	<dependency>
+		<groupId>org.eclipse.jface</groupId>
+		<artifactId>jface</artifactId>
+		<version>3.10.2.v20141021-1035</version>
+	</dependency>
+	<dependency>
+		<groupId>org.eclipse.jface.databinding</groupId>
+		<artifactId>databinding</artifactId>
+		<version>1.6.200.v20140528-1422</version>
+	</dependency>
+	<dependency>
+		<groupId>org.eclipse.swt</groupId>
+		<artifactId>swt</artifactId>
+		<version>3.103.2.v20150203-1313</version>
+	</dependency>
+<!--	<dependency>
+		<groupId>org.eclipse.swt.cocoa.macosx.x86_64</groupId>
+		<artifactId>x86_64</artifactId>
+		<version>3.103.2.v20150203-1351</version>
+	</dependency>
+	<dependency>
+		<groupId>org.eclipse.swt.gtk.linux.x86</groupId>
+		<artifactId>x86</artifactId>
+		<version>3.103.2.v20150203-1351</version>
+	</dependency>   --> 
+	<dependency>
+		<groupId>org.eclipse.swt.gtk.linux.x86_64</groupId>
+		<artifactId>x86_64</artifactId>
+		<version>3.103.2.v20150203-1351</version>
+	</dependency> 
+<!--	<dependency>
+		<groupId>org.eclipse.swt.win32.win32.x86</groupId>
+		<artifactId>x86</artifactId>
+		<version>3.103.2.v20150203-1351</version>
+	</dependency>
+	<dependency>
+		<groupId>org.eclipse.swt.win32.win32.x86_64</groupId>
+		<artifactId>x86_64</artifactId>
+		<version>3.103.2.v20150203-1351</version>
+	</dependency> -->
+		
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>4.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<version>4.5.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>19.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		
+		<!-- image shit -->
+		<!-- read BMPs -->
+		<dependency>
+			<groupId>org.jclarion</groupId>
+			<artifactId>image4j</artifactId>
+			<version>0.7</version>
+		</dependency>
+		<!-- output actually compressed PNGs w/DPI -->
+		<dependency>
+			<groupId>ar.com.hjg</groupId>
+			<artifactId>pngj</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+		<!-- pdf support -->
+		<dependency>
+			<groupId>org.apache.pdfbox</groupId>
+			<artifactId>pdfbox</artifactId>
+			<version>2.0.0-RC3</version>
+		</dependency>
+		
+		
+
+	</dependencies>
+</project>
