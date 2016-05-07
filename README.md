@@ -38,7 +38,13 @@ Then run build-repository.sh.
 
 The project should now build with Maven.
 
+Edit pom.xml to indicate the SWT platform (i.e. windows 64-bit) you want
+to build it with.
+
 Edit Globals.java so that API_BASE points to your API.
+
+Run the following to build it:
+``mvn clean compile assembly:single``
 
 In order to use this with Mayan EDMS, you'll need to patch a bug in your
 Mayan EDMS installation by using the included mayan.diff.
