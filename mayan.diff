@@ -1,4 +1,4 @@
-diff -ur mayan/apps/metadata/api_views.py /home/mayan-edms/mayan/apps/metadata/api_views.py
+diff -ur mayan/apps/metadata/api_views.py mayan.fixed/apps/metadata/api_views.py
 --- mayan/apps/metadata/api_views.py	2016-02-14 20:37:04.000000000 -0500
 +++ mayan.fixed/apps/metadata/api_views.py	2016-02-26 20:40:08.938486710 -0500
 @@ -97,7 +101,7 @@
